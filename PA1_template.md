@@ -1,4 +1,5 @@
 # Reproducible Research: Peer Assessment 1
+
 ###===========================================
 
 
@@ -35,7 +36,7 @@ stepsbydate <- aggregate(steps ~ date, data=active_ds, FUN=sum, na.rm=TRUE)
 hist(stepsbydate$steps, col = "blue", main = "steps", xlab="Number of Steps, Daily")
 ```
 
-![plot of chunk unnamed-chunk-2](./PA1_template1_files/figure-html/unnamed-chunk-2.png) 
+![plot of chunk unnamed-chunk-2](./PA1_template_files/figure-html/unnamed-chunk-2.png) 
 
 We now calculate and report the mean and median of total number of steps.
 
@@ -63,7 +64,7 @@ xyplot(steps~interval, data=stepsbyinterval, type="l", lwd=1, col="blue", ylab="
      xlab="Intervals", main="Time Series Plot of Interval vs. Step avg.")
 ```
 
-![plot of chunk unnamed-chunk-4](./PA1_template1_files/figure-html/unnamed-chunk-4.png) 
+![plot of chunk unnamed-chunk-4](./PA1_template_files/figure-html/unnamed-chunk-4.png) 
 
 ```r
 x<-stepsbyinterval[which.max(stepsbyinterval$steps),]$interval
@@ -149,7 +150,7 @@ stepsbydate_missing <- aggregate(steps ~ date, data=missing_filled_ds, FUN=sum, 
 hist(stepsbydate_missing$steps, col = "green", main = "steps", xlab="Number of Steps, Daily")
 ```
 
-![plot of chunk unnamed-chunk-7](./PA1_template1_files/figure-html/unnamed-chunk-7.png) 
+![plot of chunk unnamed-chunk-7](./PA1_template_files/figure-html/unnamed-chunk-7.png) 
 
 
 ```r
@@ -189,4 +190,5 @@ xyplot(steps ~ interval | wd_sw, data=wdsteps_ds_int, type = "l", ylab = "Number
        xlab = "Interval", main = "Interval vs. Number of Steps", layout = c(1, 2))
 ```
 
-![plot of chunk unnamed-chunk-9](./PA1_template1_files/figure-html/unnamed-chunk-9.png) 
+![plot of chunk unnamed-chunk-9](./PA1_template_files/figure-html/unnamed-chunk-9.png) 
+=======
