@@ -1,3 +1,8 @@
+---
+output:
+  html_document:
+    keep_md: yes
+---
 # Reproducible Research: Peer Assessment 1
 
 ###===========================================
@@ -16,7 +21,13 @@ We'll start by loading the data into R. Please make note that the file needs to 
 
 ```r
 library(data.table)
+```
 
+```
+## data.table 1.9.2  For help type: help("data.table")
+```
+
+```r
 active_ds<-read.table("activity.csv", header=TRUE, sep=",", stringsAsFactors=FALSE)
 active_ds$date <- as.Date(active_ds$date, format = "%Y-%m-%d")
 active_ds[,c(1,3)]<- apply(active_ds[,c(1,3)], 2, function(x) as.numeric(x))
@@ -36,7 +47,7 @@ stepsbydate <- aggregate(steps ~ date, data=active_ds, FUN=sum, na.rm=TRUE)
 hist(stepsbydate$steps, col = "blue", main = "steps", xlab="Number of Steps, Daily")
 ```
 
-![plot of chunk unnamed-chunk-2](./PA1_template_files/figure-html/unnamed-chunk-2.png) 
+![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2.png) 
 
 We now calculate and report the mean and median of total number of steps.
 
@@ -64,7 +75,7 @@ xyplot(steps~interval, data=stepsbyinterval, type="l", lwd=1, col="blue", ylab="
      xlab="Intervals", main="Time Series Plot of Interval vs. Step avg.")
 ```
 
-![plot of chunk unnamed-chunk-4](./PA1_template_files/figure-html/unnamed-chunk-4.png) 
+![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4.png) 
 
 ```r
 x<-stepsbyinterval[which.max(stepsbyinterval$steps),]$interval
@@ -150,7 +161,7 @@ stepsbydate_missing <- aggregate(steps ~ date, data=missing_filled_ds, FUN=sum, 
 hist(stepsbydate_missing$steps, col = "green", main = "steps", xlab="Number of Steps, Daily")
 ```
 
-![plot of chunk unnamed-chunk-7](./PA1_template_files/figure-html/unnamed-chunk-7.png) 
+![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7.png) 
 
 
 ```r
@@ -190,5 +201,5 @@ xyplot(steps ~ interval | wd_sw, data=wdsteps_ds_int, type = "l", ylab = "Number
        xlab = "Interval", main = "Interval vs. Number of Steps", layout = c(1, 2))
 ```
 
-![plot of chunk unnamed-chunk-9](./PA1_template_files/figure-html/unnamed-chunk-9.png) 
+![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-9.png) 
 =======
